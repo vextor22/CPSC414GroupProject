@@ -9,8 +9,8 @@ The group 4 team consists of 4 members:
 
 # Project Synopsis
 
-The aim of this project is to provide a solution to some of the issues encountered by users of current home entertainment products.
+This project aims to identify a problem with existing home entertainment solutions. 
 
 # Project Milestones:
 
-- [Milestone 0](https://vextor22.github.io/CPSC414GroupProject/Milestone_0.pdf)
+- [Milestone 0](https://vextor22.github.io/CPSC414GroupProject/Group4_Milestone_0.pdf)
