@@ -16,3 +16,4 @@ Home entertainment is a large market, and nearly every person has some preferenc
 # Project Milestones:
 
 - [Milestone 0](https://vextor22.github.io/CPSC414GroupProject/Group4_Milestone_0.pdf)
+- [Milestone 1](https://vextor22.github.io/CPSC414GroupProject/Group4_Milestone_1.pdf)
