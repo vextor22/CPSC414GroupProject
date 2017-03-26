@@ -13,6 +13,12 @@ import javax.swing.Box;
 import javax.swing.JSeparator;
 import javax.swing.SwingConstants;
 import java.awt.FlowLayout;
+import java.awt.GridLayout;
+import javax.swing.border.SoftBevelBorder;
+import javax.swing.border.BevelBorder;
+import javax.swing.border.EtchedBorder;
+import javax.swing.border.LineBorder;
+import java.awt.Color;
 
 public class ObjectivesPanel extends JPanel{
 
@@ -25,22 +31,28 @@ public class ObjectivesPanel extends JPanel{
 
 	public ObjectivesPanel() {
 		super();
-		setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		setBorder(new LineBorder(new Color(0, 0, 0)));
+		setLayout(new GridLayout(0, 2, 0, 0));
 		
 		JPanel pnlObjectiveList = new JPanel();
+		pnlObjectiveList.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		add(pnlObjectiveList);
 		pnlObjectiveList.setLayout(new BoxLayout(pnlObjectiveList, BoxLayout.Y_AXIS));
 		
 		JLabel lblObjectiveList = new JLabel("Objective 2");
+		lblObjectiveList.setHorizontalAlignment(SwingConstants.CENTER);
 		pnlObjectiveList.add(lblObjectiveList);
 		
 		JLabel lblNewLabel = new JLabel("New label");
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		pnlObjectiveList.add(lblNewLabel);
 		
 		JPanel pnlCurrentObjective = new JPanel();
+		pnlCurrentObjective.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		add(pnlCurrentObjective);
 		
 		JLabel lblCurrentObjective = new JLabel("Current Objective");
+		lblCurrentObjective.setHorizontalAlignment(SwingConstants.CENTER);
 		pnlCurrentObjective.add(lblCurrentObjective);
 		// TODO Auto-generated constructor stub
 		
