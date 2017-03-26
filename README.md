@@ -1,3 +1,10 @@
 # Group 4 Semester Project README
 
-In this file you can add any information that will be needed for setting up the project in Eclipse or dependencies for building.
+Building eclipse project from src:
+
+- Start eclipse, select new Java project. 
+- Name the project "CPSC414GroupProject" and select next.
+- On the sources screen, select "Link additional source"
+- Navigate to the src folder of this repository and select "Ok"
+- Name the folder GitSrc
+- Click Finish, you should see two source directories, src and GitSrc. Files in GitSrc can be managed by the git repository.
