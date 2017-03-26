@@ -1,5 +1,9 @@
 package prototypeAR;
-
+/*
+ * 
+ * Objective class represents an objective of a step as it should be displayed within the objectives box.
+ * 
+ */
 public class Objective {
 	private String objectiveString;
 	private int time;
