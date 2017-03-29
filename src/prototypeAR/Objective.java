@@ -5,7 +5,7 @@ package prototypeAR;
  * 
  */
 public class Objective {
-	private String objectiveString;
+	private String title, objectiveString;
 	private int time;
 	
 	
@@ -14,8 +14,19 @@ public class Objective {
 		this.objectiveString = objectiveString;
 		this.time = time;
 	}
+	public Objective(String title, String descr) {
+		super();
+		this.objectiveString = descr;
+		this.title = title;
+	}
 
 
+	public String getTitle() {
+		return title;
+	}
+	public String getObjectiveString() {
+		return objectiveString;
+	}
 	@Override
 	public String toString() {
 		return objectiveString + time;
