@@ -29,7 +29,7 @@ public class Objective {
 	}
 	@Override
 	public String toString() {
-		return objectiveString + time;
+		return title + " " + objectiveString;
 	}
 	
 	

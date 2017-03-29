@@ -32,11 +32,21 @@ public class ObjectivesPanel extends JPanel{
 	
 	private Queue<Objective> fullObjectiveList = new LinkedList<Objective>();
 	private Queue<Objective> upcomingList = new LinkedList<Objective>();
+	private List<JLabel> upcomingLabelList = new ArrayList<JLabel>();
+	private Objective cur;
 	private JLabel[] lblsUpcomingObjectives = new JLabel[6];
 	private static final long serialVersionUID = -7613749376969458763L;
 
 	public ObjectivesPanel(List<Objective> objectives) {
 		super();
+		
+		for(Objective obj : objectives){
+			fullObjectiveList.add(obj);
+		}
+		cur = fullObjectiveList.poll();
+		for(int i = 0; i < 6; i++){
+			upcomingList.add(fullObjectiveList.poll());
+		}
 		setBorder(new LineBorder(new Color(0, 0, 0)));
 		setLayout(new GridLayout(0, 2, 0, 0));
 		
@@ -50,10 +60,35 @@ public class ObjectivesPanel extends JPanel{
 		lblObjectiveListTitle.setHorizontalAlignment(SwingConstants.CENTER);
 		pnlObjectiveList.add(lblObjectiveListTitle);
 		
-		JLabel lblUpcoming = new JLabel("ObjectiveListHere");
-		lblUpcoming.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblUpcoming.setHorizontalAlignment(SwingConstants.CENTER);
-		pnlObjectiveList.add(lblUpcoming);
+		JLabel lblUpcoming1 = new JLabel("ObjectiveListHere");
+		lblUpcoming1.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblUpcoming1.setHorizontalAlignment(SwingConstants.CENTER);
+		pnlObjectiveList.add(lblUpcoming1);
+		
+		JLabel lblUpcoming2 = new JLabel("ObjectiveListHere");
+		lblUpcoming2.setHorizontalAlignment(SwingConstants.CENTER);
+		lblUpcoming2.setFont(new Font("Dialog", Font.PLAIN, 18));
+		pnlObjectiveList.add(lblUpcoming2);
+		
+		JLabel lblUpcoming3 = new JLabel("ObjectiveListHere");
+		lblUpcoming3.setHorizontalAlignment(SwingConstants.CENTER);
+		lblUpcoming3.setFont(new Font("Dialog", Font.PLAIN, 18));
+		pnlObjectiveList.add(lblUpcoming3);
+		
+		JLabel lblUpcoming4 = new JLabel("ObjectiveListHere");
+		lblUpcoming4.setHorizontalAlignment(SwingConstants.CENTER);
+		lblUpcoming4.setFont(new Font("Dialog", Font.PLAIN, 18));
+		pnlObjectiveList.add(lblUpcoming4);
+		
+		JLabel lblUpcoming5 = new JLabel("ObjectiveListHere");
+		lblUpcoming5.setHorizontalAlignment(SwingConstants.CENTER);
+		lblUpcoming5.setFont(new Font("Dialog", Font.PLAIN, 18));
+		pnlObjectiveList.add(lblUpcoming5);
+		
+		JLabel lblUpcoming6 = new JLabel("ObjectiveListHere");
+		lblUpcoming6.setHorizontalAlignment(SwingConstants.CENTER);
+		lblUpcoming6.setFont(new Font("Dialog", Font.PLAIN, 18));
+		pnlObjectiveList.add(lblUpcoming6);
 		
 		JPanel pnlCurrentObjective = new JPanel();
 		pnlCurrentObjective.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
@@ -69,6 +104,18 @@ public class ObjectivesPanel extends JPanel{
 		lblCurrentObjective.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		pnlCurrentObjective.add(lblCurrentObjective);
 		// TODO Auto-generated constructor stub
+		
+		upcomingLabelList.add(lblUpcoming1);
+		upcomingLabelList.add(lblUpcoming2);
+		upcomingLabelList.add(lblUpcoming3);
+		upcomingLabelList.add(lblUpcoming4);
+		upcomingLabelList.add(lblUpcoming5);
+		upcomingLabelList.add(lblUpcoming6);
+		
+		lblCurrentObjective.setText(cur.toString());
+		for(int i = 0; i < upcomingLabelList.size(); i++){
+			upcomingLabelList.get(i).setText(((Objective)upcomingList.toArray()[i]).getTitle());
+		}
 		
 	}
 	
