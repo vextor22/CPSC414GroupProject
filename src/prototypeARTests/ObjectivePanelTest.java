@@ -1,9 +1,12 @@
 package prototypeARTests;
 
 import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 
 import prototypeAR.Objective;
@@ -22,11 +25,26 @@ public class ObjectivePanelTest {
 		objArray.add(new Objective("5", "5 descr"));
 		objArray.add(new Objective("6", "6 descr"));
 		objArray.add(new Objective("7", "7 descr"));
+		objArray.add(new Objective("8", "8 Descr"));
+		
+		ObjectivesPanel objPanel = new ObjectivesPanel(objArray);
 		
 		JFrame jframe = new JFrame();
+		JButton btnUpdate = new JButton();
+		btnUpdate.setText("Update!");
+		btnUpdate.addActionListener(new ActionListener()
+		{
+		  public void actionPerformed(ActionEvent e)
+		  {
+		    //move to the next step in objPanel
+		    objPanel.update();
+		  }
+		});
 		
 		jframe.setLayout(new BorderLayout());
-		jframe.add(new ObjectivesPanel(objArray), BorderLayout.CENTER);
+		jframe.add(btnUpdate, BorderLayout.SOUTH);
+		jframe.add(objPanel, BorderLayout.CENTER);
+		jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		jframe.pack();
 		jframe.setVisible(true);

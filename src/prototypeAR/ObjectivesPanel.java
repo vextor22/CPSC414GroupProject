@@ -36,6 +36,7 @@ public class ObjectivesPanel extends JPanel{
 	private Objective cur;
 	private JLabel[] lblsUpcomingObjectives = new JLabel[6];
 	private static final long serialVersionUID = -7613749376969458763L;
+	private JLabel lblCurrentObjective;
 
 	public ObjectivesPanel(List<Objective> objectives) {
 		super();
@@ -100,7 +101,7 @@ public class ObjectivesPanel extends JPanel{
 		lblCurrentObjectiveTitle.setHorizontalAlignment(SwingConstants.CENTER);
 		pnlCurrentObjective.add(lblCurrentObjectiveTitle);
 		
-		JLabel lblCurrentObjective = new JLabel("CurObjective Here");
+		lblCurrentObjective = new JLabel("CurObjective Here");
 		lblCurrentObjective.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		pnlCurrentObjective.add(lblCurrentObjective);
 		// TODO Auto-generated constructor stub
@@ -112,15 +113,32 @@ public class ObjectivesPanel extends JPanel{
 		upcomingLabelList.add(lblUpcoming5);
 		upcomingLabelList.add(lblUpcoming6);
 		
-		lblCurrentObjective.setText(cur.toString());
-		for(int i = 0; i < upcomingLabelList.size(); i++){
-			upcomingLabelList.get(i).setText(((Objective)upcomingList.toArray()[i]).getTitle());
-		}
+		updateLabels();
 		
+	}
+	
+	private void updateLabels(){
+		if(cur != null)
+			lblCurrentObjective.setText(cur.toString());
+		else
+			lblCurrentObjective.setText("Finished!");
+
+		for(int i = 0; i < upcomingLabelList.size(); i++){
+			System.out.println(i + " " + upcomingList.size());
+			if(i < upcomingList.size())
+				upcomingLabelList.get(i).setText(((Objective)upcomingList.toArray()[i]).getTitle());
+			else
+				upcomingLabelList.get(i).setText("");
+		}
 	}
 	
 	public void update(){
 		System.out.println("ObjectivesPanel update fired!");
+		cur = upcomingList.poll();
+		Objective obj = fullObjectiveList.poll();
+		if(obj != null)
+			upcomingList.add(obj);
+		updateLabels();
 	}
 	
 	
