@@ -6,14 +6,6 @@ package prototypeAR;
  */
 public class Objective {
 	private String title, objectiveString;
-	private int time;
-	
-	
-	public Objective(String objectiveString, int time) {
-		super();
-		this.objectiveString = objectiveString;
-		this.time = time;
-	}
 	public Objective(String title, String descr) {
 		super();
 		this.objectiveString = descr;

@@ -4,21 +4,11 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
-import java.util.Stack;
-
 import javax.swing.JPanel;
-import javax.swing.JSplitPane;
 import javax.swing.BoxLayout;
-import java.awt.BorderLayout;
 import javax.swing.JLabel;
-import java.awt.Component;
-import javax.swing.Box;
-import javax.swing.JSeparator;
 import javax.swing.SwingConstants;
-import java.awt.FlowLayout;
 import java.awt.GridLayout;
-import javax.swing.border.SoftBevelBorder;
-import javax.swing.border.BevelBorder;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.LineBorder;
 import java.awt.Color;
@@ -34,13 +24,14 @@ public class ObjectivesPanel extends JPanel{
 	private Queue<Objective> upcomingList = new LinkedList<Objective>();
 	private List<JLabel> upcomingLabelList = new ArrayList<JLabel>();
 	private Objective cur;
-	private JLabel[] lblsUpcomingObjectives = new JLabel[6];
 	private static final long serialVersionUID = -7613749376969458763L;
 	private JLabel lblCurrentObjective;
 
 	public ObjectivesPanel(List<Objective> objectives) {
 		super();
 		
+		
+		//may have to change this loop to target java 1.7
 		for(Objective obj : objectives){
 			fullObjectiveList.add(obj);
 		}
@@ -104,8 +95,8 @@ public class ObjectivesPanel extends JPanel{
 		lblCurrentObjective = new JLabel("CurObjective Here");
 		lblCurrentObjective.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		pnlCurrentObjective.add(lblCurrentObjective);
-		// TODO Auto-generated constructor stub
 		
+		//register the labels for upcoming objectives with the relevant list
 		upcomingLabelList.add(lblUpcoming1);
 		upcomingLabelList.add(lblUpcoming2);
 		upcomingLabelList.add(lblUpcoming3);
