@@ -21,7 +21,7 @@ public class Objective {
 	}
 	@Override
 	public String toString() {
-		return title + " " + objectiveString;
+		return title + ":\n" + objectiveString;
 	}
 	
 	

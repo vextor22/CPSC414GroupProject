@@ -16,6 +16,8 @@ import javax.swing.border.EtchedBorder;
 import javax.swing.border.LineBorder;
 import java.awt.Color;
 import java.awt.Font;
+import javax.swing.JTextArea;
+import javax.swing.UIManager;
 
 public class ObjectivesPanel extends JPanel{
 
@@ -30,8 +32,7 @@ public class ObjectivesPanel extends JPanel{
 	private Objective cur;
 	private boolean finished = false;
 	private static final long serialVersionUID = -7613749376969458763L;
-	private JLabel lblCurrentObjective;
-
+	JTextArea lblCurrentObjective;
 	public ObjectivesPanel(List<Objective> objectives) {
 		super();
 		
@@ -92,13 +93,20 @@ public class ObjectivesPanel extends JPanel{
 		add(pnlCurrentObjective);
 		pnlCurrentObjective.setLayout(new BoxLayout(pnlCurrentObjective, BoxLayout.Y_AXIS));
 		
-		JLabel lblCurrentObjectiveTitle = new JLabel("Current Objective");
+		JTextArea lblCurrentObjectiveTitle = new JTextArea("Current Objective");
+		lblCurrentObjectiveTitle.setEditable(false);
 		lblCurrentObjectiveTitle.setFont(new Font("Tahoma", Font.PLAIN, 24));
-		lblCurrentObjectiveTitle.setHorizontalAlignment(SwingConstants.CENTER);
+		lblCurrentObjectiveTitle.setBackground(UIManager.getColor("Panel.background"));
 		pnlCurrentObjective.add(lblCurrentObjectiveTitle);
 		
-		lblCurrentObjective = new JLabel("CurObjective Here");
-		lblCurrentObjective.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblCurrentObjective = new JTextArea();
+		lblCurrentObjective.setColumns(20);
+		lblCurrentObjective.setRows(8);
+		lblCurrentObjective.setEditable(false);
+		lblCurrentObjective.setWrapStyleWord(true);
+		lblCurrentObjective.setLineWrap(true);
+		lblCurrentObjective.setFont(new Font("Dialog", Font.PLAIN, 18));
+		lblCurrentObjective.setBackground(UIManager.getColor("Panel.background"));
 		pnlCurrentObjective.add(lblCurrentObjective);
 		
 		//register the labels for upcoming objectives with the relevant list
