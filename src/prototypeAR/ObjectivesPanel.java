@@ -32,7 +32,8 @@ public class ObjectivesPanel extends JPanel{
 	private Objective cur;
 	private boolean finished = false;
 	private static final long serialVersionUID = -7613749376969458763L;
-	JTextArea lblCurrentObjective;
+	private JTextArea lblCurrentObjective;
+	private JTextArea lblCurrentObjectiveTitle;
 	public ObjectivesPanel(List<Objective> objectives) {
 		super();
 		
@@ -93,15 +94,15 @@ public class ObjectivesPanel extends JPanel{
 		add(pnlCurrentObjective);
 		pnlCurrentObjective.setLayout(new BoxLayout(pnlCurrentObjective, BoxLayout.Y_AXIS));
 		
-		JTextArea lblCurrentObjectiveTitle = new JTextArea("Current Objective");
+		lblCurrentObjectiveTitle = new JTextArea("Current Objective");
 		lblCurrentObjectiveTitle.setEditable(false);
-		lblCurrentObjectiveTitle.setFont(new Font("Tahoma", Font.PLAIN, 24));
+		lblCurrentObjectiveTitle.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		lblCurrentObjectiveTitle.setBackground(UIManager.getColor("Panel.background"));
 		pnlCurrentObjective.add(lblCurrentObjectiveTitle);
 		
 		lblCurrentObjective = new JTextArea();
-		lblCurrentObjective.setColumns(20);
-		lblCurrentObjective.setRows(8);
+		lblCurrentObjective.setColumns(24);
+		lblCurrentObjective.setRows(3);
 		lblCurrentObjective.setEditable(false);
 		lblCurrentObjective.setWrapStyleWord(true);
 		lblCurrentObjective.setLineWrap(true);
@@ -122,10 +123,14 @@ public class ObjectivesPanel extends JPanel{
 	}
 	
 	private void updateLabels(){
-		if(finished != true)
-			lblCurrentObjective.setText(cur.toString());
-		else
+		if(finished != true){
+			lblCurrentObjective.setText(cur.getObjectiveString());
+			lblCurrentObjectiveTitle.setText("Current Objective: " + cur.getTitle() + "\n");
+		}
+		else{
 			lblCurrentObjective.setText("Finished!");
+			lblCurrentObjectiveTitle.setText("Current Objective\n");
+		}
 
 		for(int i = 0; i < upcomingLabelList.size(); i++){
 			System.out.println(i + " " + upcomingList.size());
