@@ -28,6 +28,7 @@ public class ObjectivesPanel extends JPanel{
 	private Stack<Objective> previousList = new Stack<Objective>();
 	private List<JLabel> upcomingLabelList = new ArrayList<JLabel>();
 	private Objective cur;
+	private boolean finished = false;
 	private static final long serialVersionUID = -7613749376969458763L;
 	private JLabel lblCurrentObjective;
 
@@ -113,7 +114,7 @@ public class ObjectivesPanel extends JPanel{
 	}
 	
 	private void updateLabels(){
-		if(cur != null)
+		if(finished != true)
 			lblCurrentObjective.setText(cur.toString());
 		else
 			lblCurrentObjective.setText("Finished!");
@@ -129,12 +130,16 @@ public class ObjectivesPanel extends JPanel{
 	
 	public void reverse(){
 		System.out.println("Reverse!");
-		if(previousList.size() > 0){
-			if(upcomingList.size() > 5)
-				fullObjectiveList.addFirst(upcomingList.removeLast());
-			upcomingList.addFirst(cur);
-			cur = previousList.pop();
-			
+		if(finished)
+			finished = false;
+		else{
+			if(previousList.size() > 0){
+				if(upcomingList.size() > 5)
+					fullObjectiveList.addFirst(upcomingList.removeLast());
+				upcomingList.addFirst(cur);
+				cur = previousList.pop();
+				
+			}
 		}
 			
 		updateLabels();
@@ -142,15 +147,23 @@ public class ObjectivesPanel extends JPanel{
 	
 	public void update(){
 		
-		System.out.println("ObjectivesPanel update fired!");
-		if(cur != null)
-			previousList.add(cur);
+		System.out.println("ObjectivesPanel update fired!" + upcomingList.peek() + finished);
+
+			
 		
-		cur = upcomingList.poll();
+		if(upcomingList.peek() != null){
+			previousList.add(cur);
+			cur = upcomingList.poll();
+		}
+		else
+			finished = true;
 		
 		Objective obj = fullObjectiveList.poll();
 		if(obj != null)
 			upcomingList.add(obj);
+		
+		
+		
 		updateLabels();
 	}
 	
