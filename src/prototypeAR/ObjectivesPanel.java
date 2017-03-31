@@ -1,9 +1,12 @@
 package prototypeAR;
 
 import java.util.ArrayList;
+import java.util.Deque;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
+import java.util.Stack;
+
 import javax.swing.JPanel;
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
@@ -20,8 +23,9 @@ public class ObjectivesPanel extends JPanel{
 	 * 
 	 */
 	
-	private Queue<Objective> fullObjectiveList = new LinkedList<Objective>();
-	private Queue<Objective> upcomingList = new LinkedList<Objective>();
+	private Deque<Objective> fullObjectiveList = new LinkedList<Objective>();
+	private Deque<Objective> upcomingList = new LinkedList<Objective>();
+	private Stack<Objective> previousList = new Stack<Objective>();
 	private List<JLabel> upcomingLabelList = new ArrayList<JLabel>();
 	private Objective cur;
 	private static final long serialVersionUID = -7613749376969458763L;
@@ -123,9 +127,27 @@ public class ObjectivesPanel extends JPanel{
 		}
 	}
 	
+	public void reverse(){
+		System.out.println("Reverse!");
+		if(previousList.size() > 0){
+			if(upcomingList.size() > 5)
+				fullObjectiveList.addFirst(upcomingList.removeLast());
+			upcomingList.addFirst(cur);
+			cur = previousList.pop();
+			
+		}
+			
+		updateLabels();
+	}
+	
 	public void update(){
+		
 		System.out.println("ObjectivesPanel update fired!");
+		if(cur != null)
+			previousList.add(cur);
+		
 		cur = upcomingList.poll();
+		
 		Objective obj = fullObjectiveList.poll();
 		if(obj != null)
 			upcomingList.add(obj);

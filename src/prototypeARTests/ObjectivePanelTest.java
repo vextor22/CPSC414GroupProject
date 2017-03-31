@@ -38,9 +38,20 @@ public class ObjectivePanelTest {
 		    objPanel.update();
 		  }
 		});
+		JButton btnReverse = new JButton();
+		btnReverse.setText("Reverse!");
+		btnReverse.addActionListener(new ActionListener()
+		{
+		  public void actionPerformed(ActionEvent e)
+		  {
+		    //move to the next step in objPanel
+		    objPanel.reverse();
+		  }
+		});
 		
 		jframe.setLayout(new BorderLayout());
-		jframe.add(btnUpdate, BorderLayout.SOUTH);
+		jframe.add(btnUpdate, BorderLayout.NORTH);
+		jframe.add(btnReverse, BorderLayout.SOUTH);
 		jframe.add(objPanel, BorderLayout.CENTER);
 		jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
