@@ -4,6 +4,8 @@ import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.List;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
@@ -24,6 +26,14 @@ public class ObjectivePanelTest {
 		objectiveList.add(new Objective("Get Plate", "Get a plate."));
 		objectiveList.add(new Objective("Add Plate", "Place the bread on the plate."));
 		objectiveList.add(new Objective("Enjoy", "All finished! Enjoy your sandwich and don't forget to clean up!"));
+		
+		
+		List<Objective> objectiveListKale = new ArrayList<Objective>();
+		objectiveListKale.add(new Objective("Prepare", "Gather your kale and a plate."));
+		objectiveListKale.add(new Objective("Peel", "Peel the kale"));
+		objectiveListKale.add(new Objective("Plate", "Place the peeled kale on your plate."));
+		objectiveListKale.add(new Objective("Toss", "Toss the salad and add dressing as desired."));
+		
 		
 		ObjectivesPanel objPanel = new ObjectivesPanel(objectiveList);
 		

@@ -43,7 +43,7 @@ public class ObjectivesPanel extends JPanel{
 			fullObjectiveList.add(obj);
 		}
 		cur = fullObjectiveList.poll();
-		for(int i = 0; i < 6; i++){
+		for(int i = 0; i < 6 && fullObjectiveList.size() > 0; i++){
 			upcomingList.add(fullObjectiveList.poll());
 		}
 		setBorder(new LineBorder(new Color(0, 0, 0)));
@@ -133,7 +133,7 @@ public class ObjectivesPanel extends JPanel{
 		}
 
 		for(int i = 0; i < upcomingLabelList.size(); i++){
-			System.out.println(i + " " + upcomingList.size());
+			
 			if(i < upcomingList.size())
 				upcomingLabelList.get(i).setText(((Objective)upcomingList.toArray()[i]).getTitle());
 			else
@@ -142,7 +142,7 @@ public class ObjectivesPanel extends JPanel{
 	}
 	
 	public void reverse(){
-		System.out.println("Reverse!");
+		
 		if(finished)
 			finished = false;
 		else{
@@ -160,7 +160,6 @@ public class ObjectivesPanel extends JPanel{
 	
 	public void update(){
 		
-		System.out.println("ObjectivesPanel update fired!" + upcomingList.peek() + finished);
 
 			
 		
